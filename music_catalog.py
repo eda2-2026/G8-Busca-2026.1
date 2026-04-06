@@ -75,10 +75,6 @@ class MusicCatalog:
         self._albums[album.album_id] = album
         self._rebuild_album_lists()
 
-    # ------------------------------------------------------------------
-    # Busca por ID  (O(1) — não é o foco da disciplina, mas útil)
-    # ------------------------------------------------------------------
-
     def get_artist(self, artist_id: int) -> Optional[Artist]:
         return self._artists.get(artist_id)
 
