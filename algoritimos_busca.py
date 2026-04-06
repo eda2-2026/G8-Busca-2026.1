@@ -73,38 +73,73 @@ def linear_search_artist_by_name(artists: list[Artist], name: str) -> int:
 def binary_search_song_by_title(songs: list[Song], title: str) -> int:
     """
     Busca binária em lista de músicas ordenada ALFABETICAMENTE pelo título.
-
     Pré-condição: `songs` deve estar ordenada por título (a–z).
-
     Complexidade: O(log n)
     """
-    # TODO: implemente a busca binária aqui
-    # Dica: use `songs[mid].title.lower()` para comparar com `title.lower()`
-    raise NotImplementedError("Implemente binary_search_song_by_title()")
+    low = 0
+    high = len(songs) - 1
+    target = title.lower()
+
+    while low <= high:
+        mid = (low + high) // 2
+        mid_title = songs[mid].title.lower()
+
+        if mid_title == target:
+            return mid
+        elif mid_title < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+            
+    return -1
 
 
 def binary_search_artist_by_name(artists: list[Artist], name: str) -> int:
     """
     Busca binária em lista de artistas ordenada ALFABETICAMENTE pelo nome.
-
     Pré-condição: `artists` deve estar ordenada por nome (a–z).
-
     Complexidade: O(log n)
     """
-    # TODO: implemente a busca binária aqui
-    raise NotImplementedError("Implemente binary_search_artist_by_name()")
+    low = 0
+    high = len(artists) - 1
+    target = name.lower()
+
+    while low <= high:
+        mid = (low + high) // 2
+        mid_name = artists[mid].name.lower()
+
+        if mid_name == target:
+            return mid
+        elif mid_name < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+            
+    return -1
 
 
 def binary_search_album_by_title(albums: list[Album], title: str) -> int:
     """
     Busca binária em lista de álbuns ordenada ALFABETICAMENTE pelo título.
-
     Pré-condição: `albums` deve estar ordenada por título (a–z).
-
     Complexidade: O(log n)
     """
-    # TODO: implemente a busca binária aqui
-    raise NotImplementedError("Implemente binary_search_album_by_title()")
+    low = 0
+    high = len(albums) - 1
+    target = title.lower()
+
+    while low <= high:
+        mid = (low + high) // 2
+        mid_title = albums[mid].title.lower()
+
+        if mid_title == target:
+            return mid
+        elif mid_title < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+            
+    return -1
 
 
 # =============================================================================
@@ -114,16 +149,35 @@ def binary_search_album_by_title(albums: list[Album], title: str) -> int:
 def interpolation_search_song_by_plays(songs: list[Song], plays: int) -> int:
     """
     Busca por interpolação em lista de músicas ordenada CRESCENTEMENTE por plays.
-
     Mais eficiente que a binária quando os dados são uniformemente distribuídos.
-
     Pré-condição: `songs` deve estar ordenada por plays de forma CRESCENTE.
-
     Complexidade: O(log log n) esperado; O(n) no pior caso.
     """
-    # TODO: implemente a busca por interpolação aqui
-    # Fórmula da posição: mid = low + ((target - arr[low]) * (high - low)) // (arr[high] - arr[low])
-    raise NotImplementedError("Implemente interpolation_search_song_by_plays()")
+    low = 0
+    high = len(songs) - 1
+
+    # condição do loop garante que o alvo esteja dentro dos limites atuais
+    while low <= high and plays >= songs[low].plays and plays <= songs[high].plays:
+        
+        # vai evitar divisão por zero caso todos os elementos restantes sejam iguais
+        if low == high or songs[high].plays == songs[low].plays:
+            if songs[low].plays == plays:
+                return low
+            return -1
+
+        # fórmula da posição da interpolação
+        pos_num = (plays - songs[low].plays) * (high - low)
+        pos_den = (songs[high].plays - songs[low].plays)
+        mid = low + (pos_num // pos_den)
+
+        if songs[mid].plays == plays:
+            return mid
+        elif songs[mid].plays < plays:
+            low = mid + 1
+        else:
+            high = mid - 1
+            
+    return -1
 
 # =============================================================================
 # 4. BUSCA POR HASHING
