@@ -10,6 +10,16 @@ from models.album import Album
 # 1. BUSCA LINEAR COM SENTINELA
 # =============================================================================
 
+def linear_search_artist_by_name(artists: list[Artist], name: str) -> int:
+
+    target = name.lower()
+    for i, artist in enumerate(artists):
+        if artist.name.lower() == target:
+            return i
+    return -1
+
+
+
 def linear_search_song_by_title(songs: list[Song], title: str) -> int:
 
     tamanho = len(songs)
@@ -46,20 +56,6 @@ def linear_search_song_by_title(songs: list[Song], title: str) -> int:
         return tamanho - 1
 
     return -1
-
-
-def linear_search_artist_by_name(artists: list[Artist], name: str) -> int:
-    """
-    Busca linear simples de artista pelo nome.
-
-    Complexidade: O(n)
-    """
-    target = name.lower()
-    for i, artist in enumerate(artists):
-        if artist.name.lower() == target:
-            return i
-    return -1
-
 
 # =============================================================================
 # 2. BUSCA LINEAR INDEXADA
