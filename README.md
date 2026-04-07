@@ -20,6 +20,21 @@ A ideia é simples: ao invés de rodar algoritmos sobre arrays genéricos de int
 
 ## Screenshots
 
+#### Busca linear com sentinela
+![Screenshot 1](img/sentinela.png)
+
+#### Busca linear indexada
+![Screenshot 2](img/index.png)
+
+#### Busca binária
+![Screenshot 3](img/binaria.png)
+
+#### Busca por interpolação
+![Screenshot 4](img/interp.png)
+
+#### Busca por hashing
+![Screenshot 5](img/hashing.png)
+
 --- 
 
 ## Uso
