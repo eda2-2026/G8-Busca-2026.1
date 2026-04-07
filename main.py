@@ -50,7 +50,7 @@ def main() -> None:
     # ------------------------------------------------------------------
     # 4. Visualizar as listas que serão usadas nas buscas
     # ------------------------------------------------------------------
-    section("Artistas em ordem alfabética (para Busca Binária / Fibonacci)")
+    section("Artistas em ordem alfabética (para Busca Binária)")
     for i, artist in enumerate(catalog.artists_by_name):
         print(f"  [{i:02d}] {artist.name}")
 
@@ -63,14 +63,10 @@ def main() -> None:
             feat = f"  feat: {', '.join(nomes)}"
         print(f"  [{i:02d}] {song.title} — {artist.name}{feat}")
 
-    section("Músicas ordenadas por reproduções (para Jump / Interpolação)")
+    section("Músicas ordenadas por reproduções (para Interpolação)")
     plays_asc = list(reversed(catalog.songs_by_plays))
     for i, song in enumerate(plays_asc):
         print(f"  [{i:02d}] plays={song.plays:>14,}  {song.title}")
-
-    section("Músicas ordenadas por ano (para Busca Exponencial)")
-    for i, song in enumerate(catalog.songs_by_year):
-        print(f"  [{i:02d}] {song.release_year}  {song.title}")
 
     # ------------------------------------------------------------------
     # 5. Consultas auxiliares úteis para exploração
