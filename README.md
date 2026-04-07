@@ -82,4 +82,4 @@ BENCHMARK DOS ALGORITMOS DE BUSCA — MusicDB
 
 ## Link do Vídeo 
 
-[![Logo YouTube](https://img.icons8.com/?size=100&id=19318&format=png&color=000000)](https://youtube.com)
+[![Logo YouTube](https://img.icons8.com/?size=100&id=19318&format=png&color=000000)](https://youtu.be/v8khOyGnKVM)
